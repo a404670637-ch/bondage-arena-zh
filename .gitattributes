@@ -1,0 +1,3 @@
+* text=auto
+dist/zh.csv -text
+data/strings.json -text
