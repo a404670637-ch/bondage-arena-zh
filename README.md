@@ -126,6 +126,33 @@ docs/HARDCODED.md        未覆盖的预制体文字说明
 - 游戏本体及其资产版权归 **Captive DreamDev** 所有，本仓库不包含任何游戏资产。
 - 本项目与开发商无任何关联。若权利方要求，会立即下架。
 
+
+---
+
+## 已知问题：下拉菜单显示方框（游戏缺陷）+ 可选插件
+
+游戏只在 Txt.Write(text_id) 里给文本换字体。**下拉菜单的选项文字不经过这个通道**，
+所以永远停在默认字体 cuyabra（162 个字形，**0 个汉字**）→ 设置面板里所有下拉框显示方框。
+
+- 这是**游戏自身的缺陷**，官方中文/日文/韩文在同样位置也会是方框；
+- 我们的补丁只是把原本没翻译、显示英文的地方翻成了中文，因此**暴露**了它。
+
+**修复办法**：plugin/ 目录里有一个极小的 BepInEx 插件，把游戏**自带的** zh_white / zh_black
+加入 TMP 全局 fallback 列表。不改任何游戏文件、不分发任何游戏资产。
+
+安装：
+
+1. 下载 BepInEx 5.4.23.6 x64（**不要用 BepInEx 6**，那是 IL2CPP 版），
+   解压到游戏根目录（出现 winhttp.dll、doorstop_config.ini、BepInEx 文件夹）；
+2. 编译并把 BA_ZH.dll 放进 BepInEx\plugins\ 目录：
+
+    plugin\build.cmd "G:\Bondage Arena 24.0 premium"
+    copy plugin\BA_ZH.dll "<游戏目录>\BepInEx\plugins\"
+
+卸载：删掉 BepInEx\plugins\BA_ZH.dll（或整个 BepInEx 目录）。
+
+> 这个插件是**可选**的。不装它，文字翻译依然 100% 生效，只是下拉框会是方框。
+
 ---
 
 ## English summary

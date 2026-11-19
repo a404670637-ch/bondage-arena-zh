@@ -3,3 +3,6 @@ __pycache__/
 *.pyc
 .venv/
 .local/
+plugin/bin/
+*.zip
+BA_ZH.dll
