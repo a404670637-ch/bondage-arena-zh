@@ -2,6 +2,10 @@
 
 游戏更新会用官方 zh.csv 覆盖补丁，中文随即失效。以下流程假设你已 git clone 本仓库。
 
+> 本作通过 **Patreon / itch.io** 分发（Steam 上也有同款，安装方式一致）。新版本通常是压缩包，
+> 解压覆盖到同一目录即可；发布包里不含 `BepInEx/` 与 `winhttp.dll`，所以字体修复插件通常会保留，
+> 但 `zh.csv` 会被官方文件覆盖，需要重跑 `install.py`。
+
 ## 1. 看差异
 
     python tools/check_update.py --game "<游戏目录>"
